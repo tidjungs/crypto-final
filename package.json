@@ -1,0 +1,15 @@
+{
+  "name": "cypto-hack-final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "solc": "^0.4.23",
+    "web3": "^1.0.0-beta.34"
+  }
+}
