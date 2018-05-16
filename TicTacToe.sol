@@ -12,15 +12,15 @@ contract TicTacToe {
     uint8 _currentPlayer;
     uint256 _turnDeadline;
 
-    function TicTacToe(address opponent, uint32 turnLength, bytes32 p1Commitment) public {
+    constructor (address opponent, uint32 turnLength, bytes32 p1Commitment) public {
         _playerAddress[0] = msg.sender;
         _playerAddress[1] = opponent;
         _turnLength = turnLength;
         _p1Commitment = p1Commitment;
     }
 
-    function checkCurrentPlayer() view public returns (uint8) {
-        return _currentPlayer;
+    function checkCurrentPlayer() view public returns (uint8, bytes32) {
+        return (_currentPlayer, _p1Commitment);
     }
 
     function joinGame(uint8 p2Nonce) public payable returns (bool success) {
