@@ -42,24 +42,33 @@ async function main () {
     {data: byteCode, from: accounts[0], gas: 4700000}
   );
   const commitment = await sha3withsize(player1_nonce, 8);
-  const deployedContract =  await TicTacToeContract.deploy({arguments: [accounts[1], turnLength, commitment]}).send();
+  const deployedContract =  await TicTacToeContract.deploy({arguments: [accounts[1], turnLength, commitment]}).send({
+    value: 1000000,
+  });
   
-  await deployedContract.methods.joinGame(player2_nonce).send({
-    from: accounts[1],
-    gas: 100000,
-  });
+  // let balance = await deployedContract.methods.getBalance().call();
+  // console.log(balance);
 
-  await deployedContract.methods.startGame(player1_nonce).send();
-  let board = await deployedContract.methods.getBoard().call();
-  let currentPlayer = await deployedContract.methods.getCurrentPlayer().call();
-  console.log(board, currentPlayer);
-  await deployedContract.methods.playMove(2).send({
-    from: accounts[currentPlayer],
-    gas: 100000,
-  });
-  board = await deployedContract.methods.getBoard().call();
-  currentPlayer = await deployedContract.methods.getCurrentPlayer().call();
-  console.log(board, currentPlayer);
+  // await deployedContract.methods.joinGame(player2_nonce).send({
+  //   from: accounts[1],
+  //   gas: 100000,
+  //   value: 1000000,
+  // });
+
+  // balance = await deployedContract.methods.getBalance().call();
+  // console.log(balance);
+
+  // await deployedContract.methods.startGame(player1_nonce).send();
+  // let board = await deployedContract.methods.getBoard().call();
+  // let currentPlayer = await deployedContract.methods.getCurrentPlayer().call();
+  // console.log(board, currentPlayer);
+  // await deployedContract.methods.playMove(2).send({
+  //   from: accounts[currentPlayer],
+  //   gas: 100000,
+  // });
+  // board = await deployedContract.methods.getBoard().call();
+  // currentPlayer = await deployedContract.methods.getCurrentPlayer().call();
+  // console.log(board, currentPlayer);
 
   // const curentp = await deployedContract.methods.checkCurrentPlayer().call();
   // console.log(curentp);

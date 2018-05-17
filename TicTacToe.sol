@@ -29,6 +29,11 @@ contract TicTacToe {
         _win.push([0,4,8]);
         _win.push([2,4,6]);
     }
+
+    function getBalance() view public returns (uint256) {
+        return address(this).balance;
+    }
+
     function getDead() view public returns (uint256, uint256) {
         return (block.number, _turnDeadline);
     }
@@ -43,7 +48,7 @@ contract TicTacToe {
 
     function joinGame(uint8 p2Nonce)  public payable {
         require(msg.sender == _playerAddress[1]);
-        require(msg.value >= address(this).balance);
+        // require(msg.value >= address(this).balance);
         _p2Nonce = p2Nonce;
     }
 
