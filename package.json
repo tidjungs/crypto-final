@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "solc": "^0.4.23",
+    "solidity-sha3": "^0.4.1",
     "web3": "^1.0.0-beta.34"
   }
 }
